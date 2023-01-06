@@ -1,0 +1,53 @@
+while(guess <= 0 || isNaN(guess)) {
+
+    guess = +prompt("What should the maximum number be?");
+    
+    }
+
+console.log(Math.round(guess))
+
+
+const spanTwenty = document.getElementById('twenty') //here I am changing the set 20 to the max number that user inputs
+spanTwenty.replaceWith(guess)
+
+
+
+let num = Math.floor(Math.random() * guess) + 1;
+let MAX_NUM = guess;
+
+
+console.log(num);
+
+const guesses = [];
+
+function do_guess() {
+  let message = document.getElementById("message");
+  let guess = Number(document.getElementById("guess").value);
+  
+  if(guesses.includes(guess)){
+    message.innerText = "You guessed that already, try again";
+  } else {
+  
+    if(Number.isInteger(guess) && guess>=1 && guess <=MAX_NUM){
+       guesses.push(guess);
+    }
+    if(guess == num) {
+        message.innerHTML = "You got it after guessing "+guesses.length+" times. Your guesses are "+ guesses;
+        
+    }
+    else if (guess > num) {
+        message.innerHTML = "No, try a lower number.";
+    }
+    else if (guess < num) {
+        message.innerHTML = "No, try a higher number.";
+    }
+    if (isNaN(guess)) {
+       message.innerHTML = "That is not a number!"
+    }
+    if (guess < 1 || guess > MAX_NUM) {
+        message.innerHTML = "That number is not in range, try again";
+    }
+    
+
+  }
+}
